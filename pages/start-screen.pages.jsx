@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Keyboard, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Keyboard,
+  Alert,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
 
 import ScreenStyle from "./screen.style";
 
@@ -49,16 +56,20 @@ const StartScreen = ({ handleStart }) => {
   }
 
   return (
-    <View style={ScreenStyle.startScreen}>
-      <Text style={ScreenStyle.title}>Start a New Game</Text>
-      <InputCard
-        handleInput={handleInput}
-        handleConfirm={handleConfirm}
-        handleReset={handleReset}
-        enteredNumber={enteredNumber}
-      />
-      {confirmedOutput}
-    </View>
+    <ScrollView contentContainerStyle={ScreenStyle.scrollview}>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
+        <View style={ScreenStyle.startScreen}>
+          <Text style={ScreenStyle.title}>Start a New Game</Text>
+          <InputCard
+            handleInput={handleInput}
+            handleConfirm={handleConfirm}
+            handleReset={handleReset}
+            enteredNumber={enteredNumber}
+          />
+          {confirmedOutput}
+        </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 

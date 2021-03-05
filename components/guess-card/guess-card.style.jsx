@@ -12,7 +12,7 @@ const GuessStyle = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   numberContainer: {
-    padding: 16,
+    marginBottom: 16,
   },
   number: {
     textAlign: "center",

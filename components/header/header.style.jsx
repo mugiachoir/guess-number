@@ -2,18 +2,27 @@ import { StyleSheet } from "react-native";
 
 const HeaderStyle = StyleSheet.create({
   headerContainer: {
-    backgroundColor: "purple",
     alignItems: "flex-start",
     padding: 16,
-    color: "white",
-    width: "100%",
     zIndex: 2,
+    width: "100%",
+  },
+  headerIos: {
+    backgroundColor: "white",
+  },
+  headerAndroid: {
+    backgroundColor: "purple",
   },
   headerTitle: {
-    color: "white",
     textAlign: "left",
     fontSize: 18,
     fontFamily: "poppins-bold",
+  },
+  titleIos: {
+    color: "purple",
+  },
+  titleAndroid: {
+    color: "white",
   },
 });
 

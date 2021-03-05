@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Alert, FlatList } from "react-native";
+import { View, Alert, FlatList, Dimensions } from "react-native";
 
 import ScreenStyle from "./screen.style";
 
@@ -21,9 +21,27 @@ const GameScreen = ({ userNumber, handleOver }) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
+  const [availableDeviceHeight, setAvailableDeviceHeight] = useState(
+    Dimensions.get("window").height
+  );
+  const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
+    Dimensions.get("window").width
+  );
 
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setAvailableDeviceHeight(Dimensions.get("window").height);
+      setAvailableDeviceWidth(Dimensions.get("window").width);
+    };
+    Dimensions.addEventListener("change", updateLayout);
+
+    return () => {
+      Dimensions.removeEventListener("change", updateLayout);
+    };
+  });
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -59,8 +77,21 @@ const GameScreen = ({ userNumber, handleOver }) => {
     setPastGuesses([nextNumber.toString(), ...pastGuesses]);
   };
 
+  const gameScreen = {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    flexBasis: availableDeviceWidth > 500 ? "row" : "column",
+    maxWidth: "90%",
+  };
+
   return (
-    <View style={ScreenStyle.gameScreen}>
+    <View
+      style={{
+        ...ScreenStyle.gameScreen,
+        flexDirection: availableDeviceWidth > 500 ? "row" : "column",
+      }}
+    >
       <GuessCard
         currentGuess={currentGuess}
         handleNextGuess={handleNextGuess}

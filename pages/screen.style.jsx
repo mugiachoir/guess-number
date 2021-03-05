@@ -1,11 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 const ScreenStyle = StyleSheet.create({
   startScreen: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 24,
   },
   title: {
     fontSize: 20,
@@ -16,19 +14,25 @@ const ScreenStyle = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
+    maxWidth: "90%",
   },
   overScreen: {
     flex: 1,
     alignItems: "center",
+    width: "100%",
+  },
+  scrollview: {
+    padding: 32,
+    alignItems: "center",
     justifyContent: "center",
+    minHeight: "100%",
     width: "100%",
   },
   image: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    marginVertical: 16,
+    width: Dimensions.get("window").scale * 80,
+    height: Dimensions.get("window").scale * 80,
+    borderRadius: Dimensions.get("window").scale * 40,
+    marginVertical: Dimensions.get("window").height / 40,
   },
   button: {
     marginVertical: 16,

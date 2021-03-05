@@ -3,10 +3,13 @@ import { StyleSheet } from "react-native";
 const ScreenStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+  },
+  screen: {
+    flex: 1,
+    paddingTop: 32,
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: 32,
+    backgroundColor: "#fff",
   },
 });
 

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  View,
+  TouchableWithoutFeedback,
+  Keyboard,
+  SafeAreaView,
+} from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
@@ -60,16 +65,18 @@ const App = () => {
   }
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
-    >
-      <View style={ScreenStyle.container}>
-        <Header title={"Guess A Number"} />
-        {content}
-      </View>
-    </TouchableWithoutFeedback>
+    <SafeAreaView style={ScreenStyle.container}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        <View style={ScreenStyle.screen}>
+          <Header title={"Guess A Number"} />
+          {content}
+        </View>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
   );
 };
 
